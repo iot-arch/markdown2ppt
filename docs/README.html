@@ -1,0 +1,197 @@
+<!doctype html><html><head><meta charset=UTF-8><title>Markdown to PPT - By Edward</title><link rel=stylesheet href=//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=//cdn.staticfile.org/prism/1.15.0/themes/prism.min.css><link rel=stylesheet href=//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css><link rel=stylesheet href=//cdn.staticfile.org/KaTeX/0.5.1/katex.min.css><link href=./css/chunk-vendors.4e4765ff.css rel=stylesheet></head><body><div><article id=webslides><section slide class="slide bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark"><span class="background dark" style="background-image:url('https://source.unsplash.com/C1HhAQrbykQ/')"></span><div class=wrap wrap=true><hr><h1 class="text-landing text-shadow">Markdown To PPT</h1><p class="text-intro animated fadeInUp delay-500">By Edward</p><p><a href=https://github.com/crazybber class="button ghost" target=_blank><i class="fa fa-github"></i> Github</a></p></div></section><section slide class=slide :class="size-50 aligncenter"><div class="wrap size-50 aligncenter" wrap=true><h3>MARKDOWN 写PPT 神器 <code>nodeppt</code></h3><p>入坑，就四个命令：</p><pre class=language-bash><code class=language-bash>-   <span class="token function">npm</span> i -g nodeppt
+-   nodeppt new：使用线上模板创建一个新的 md 文件 <span class="token punctuation">{</span>.animated.fadeInUp<span class="token punctuation">}</span>
+-   nodeppt serve：启动一个 md 文件的 webpack dev server
+-   nodeppt build：在当前目录的dist目录下，编译产出html/js/css
+</code></pre></div></section><section slide class=slide :class="size-60 aligncenter"><div class="wrap size-60 aligncenter" wrap=true><h3>使用模式</h3><hr><h4 align=left>演讲者模式</h4><p>nodeppt 有演讲者模式，在页面 url 后面增加<code>?mode=speaker</code> 既可以打开演讲者模式，双屏同步</p><h4 align=left>Keyboard Shortcuts</h4><ul><li>Page:: ↑/↓/←/→ Space Home End</li><li>Fullscreen:: F</li><li>Overview:: -/+</li><li>Speaker Note:: N</li><li>Grid Background:: Enter</li></ul></div></section><section slide class=slide :class="size-70 aligncenter"><div class="wrap size-70 aligncenter" wrap=true><h3>public resource</h3><hr><h2 align=center>公共资源：public 文件夹</h2><p>如果项目文件夹下，存在<code>public</code>文件夹，可以直接通过 url 访问，参考<code>webpack dev server</code>的 <code>contentBase</code> 选项。</p><p>在<code>build</code>的时候，public 文件夹中的文件会完全 copy 到<code>dist</code>文件夹中</p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3>basic Using</h3><p>整个 markdown 文件分为两部分，第一部分是写在最前面的<strong>配置</strong>，然后是使用<code>&lt;slide&gt;</code>隔开的每页幻灯片内容。</p></div></section><section slide class="slide bg-gradient-r" :class=" size-80 aligncenter" image="https://cn.bing.com/az/hprichbg/rb/WinterLynx_ZH-CN7158207296_1920x1080.jpg .dark"><span class="background dark" style="background-image:url('https://cn.bing.com/az/hprichbg/rb/WinterLynx_ZH-CN7158207296_1920x1080.jpg')"></span><div class="wrap size-80 aligncenter" wrap=true><h3>配置</h3><hr><p>nodeppt 的配置是直接写在 md 文件顶部</p><ul><li class="animated fadeInUp">title:: 演讲主题</li><li class="animated fadeInUp delay-400">speaker：演讲者</li><li>url：地址</li><li>js：js 文件数组，放到 body 之前</li><li>css：css 文件数组，放到头部</li><li>prismTheme：prism 配色，取值范围 <code>['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight']</code></li><li>plugins：目前支持 <a href=https://echarts.baidu.com/ target=_blank>echarts</a>，<a href=https://mermaidjs.github.io/ target=_blank>mermaid</a>和 <a href=https://katex.org target=_blank>katex</a> 三个插件</li></ul></div></section><section slide class=slide :class="size-50 aligncenter"><div class="wrap size-50 aligncenter" wrap=true><h4>插件</h4><hr><p>目前 nodeppt 支持 <a href=https://echarts.baidu.com/ target=_blank>图表 echarts</a>，<a href=https://mermaidjs.github.io/ target=_blank>流程图 mermaid</a>，<a href=https://katex.org target=_blank>数学符号 KaTeX</a> 三个插件。</p><p>echarts 主题配色可以直接在<code>yaml</code>配置的 js 中引入。echarts 采用<code>fence</code>语法，如下：</p><div class=embed><div class=echarts></div></div><div class=echarts-data style=display:none>{"xAxis":{"type":"category","data":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]},"yAxis":{"type":"value"},"series":[{"data":[820,932,901,934,1290,1330,1320],"type":"line"}]}</div><p>详见<a href=./echarts.md>echarts.md</a></p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h4>mermaid</h4><p>mermaid 主题配色可以直接在<code>yaml</code>配置的 js 中引入。mermaid 采用<code>fence</code>语法，如下：</p><div class=embed><pre class="lang-mermaid no-style">sequenceDiagram
+    Alice ->> Bob: Hello Bob, how are you?
+    Bob-->>John: How about you John?
+    Bob--x Alice: I am good thanks!
+    Bob-x John: I am good thanks!
+    Note right of John: Bob thinks a long<br>long time, so long<br>that the text does<br>not fit on a row.
+
+    Bob-->Alice: Checking with John...
+    Alice->John: Yes... John, how are you?
+</pre></div><p>详见<a href=./mermaid.md>mermaid.md</a></p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h4>ketex</h4><p>参考：<a href=https://www.npmjs.com/package/markdown-it-katex target=_blank>markdown-it-katex</a>语法</p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3><code>&lt;slide&gt;</code> 语法 1</h3><p>nodeppt 会根据<code>&lt;slide&gt;</code>对整个 markdown 文件进行拆分，拆成单页的幻灯片内容。<code>&lt;slide&gt;</code> 标签支持下面标签：</p><pre class=language-html><code class=language-html>-   class/style 等：正常的 class 类，可以通过这个控制居中（aligncenter），内容位置，背景色等
+-   image：背景图片，基本语法 `image="img_url"`
+-   video：背景视频，基本语法 `video="video_src1,video_src2"`
+-   :class：wrap 的 class，下面详解
+</code></pre><p>每个 slide 会解析成下面的 html 结构：</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>slide<span class="token punctuation">"</span></span> <span class="token attr-name">attrs...</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap<span class="token punctuation">"</span></span> <span class="token attr-name">wrap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>// 具体 markdown 渲染的内容<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+</code></pre><p>其中<code>&lt;slide&gt;</code> 的<code>class</code>等会被解析到 <code>&lt;section&gt;</code>标签上面，而<code>:class</code>则被解析到<code>div.wrap</code>上面，例如：</p><pre class=language-html><code class=language-html>`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slide</span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>size-50<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bg-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slide</span><span class="token punctuation">></span></span>`
+</code></pre><p>output 为：</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>slide bg-primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>wrap size-50<span class="token punctuation">"</span></span> <span class="token attr-name">wrap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>// 具体 markdown 渲染的内容<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+</code></pre></div></section><section slide class=slide :class="size-6 aligncenter"><div class="wrap size-6 aligncenter" wrap=true><h3>背景：图片</h3><p><code>&lt;slide&gt;</code>的<code>image</code> 会被解析成背景大图，常见的支持方式有：</p><pre class=language-textile><code class=language-textile><span class="token phrase">`</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slide</span> <span class="token attr-name">image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://source.unsplash.com/UJbHNoVPZW0/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token phrase">`</span>
+
+<span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 这是一个普通的背景图</span></span>
+
+<span class="token phrase">`</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slide</span> <span class="token attr-name">image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://source.unsplash.com/UJbHNoVPZW0/ .dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token phrase">`</span>
+
+<span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 这张背景图会在图片上面蒙一层偏黑色的透明层</span></span>
+
+<span class="token phrase">`</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slide</span> <span class="token attr-name">image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://source.unsplash.com/UJbHNoVPZW0/ .light<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token phrase">`</span>
+
+<span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 这张背景图会在图片上面蒙一层偏白色的透明层</span></span>
+
+<span class="token phrase">`</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slide</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bg-black aligncenter<span class="token punctuation">"</span></span> <span class="token attr-name">image</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://source.unsplash.com/n9WPPWiPPJw/ .anim<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token phrase">`</span>
+
+<span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 这张背景图会缓慢动</span>
+</span></code></pre><p>详见<a href=./site/background.md>site/background.md</a>和<a href=https://js8.in/nodeppt/background.html target=_blank>在线演示</a></p></div></section><section slide class=slide><div class=wrap wrap=true><h3>样式,布局 default style</h3><p>样式太多，具体详见<a href=classes.md>classes.md</a>和<a href=https://js8.in/nodeppt/classes.html target=_blank>在线演示</a></p><p>nodeppt 这次使用<code>webslides</code>的布局，支持丰富的布局，直接看文档<a href=./layout.md>layout.md</a>和<a href=https://js8.in/nodeppt/layout.html target=_blank>在线演示</a></p></div></section><section slide class=slide :class="size-30 content-left"><div class="wrap size-30 content-left" wrap=true><h3>attribute</h3><p>参考<a href=https://www.npmjs.com/package/markdown-it-attrs target=_blank>markdown-it-attrs</a>，支持了<code>attribute</code>，修改增加多 class 支持等功能。</p><p>其中：<code>..class</code>会往上一级节点添加 class，支持<code>{.class1.class2}</code>这种多 class 的语法。用法举例：</p><pre class=language-markdown><code class=language-markdown><span class="token title important"><span class="token punctuation">#</span> header {.style-me.class2}</span>
+
+paragraph {data-toggle=modal}
+</code></pre><p>Output::</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>style-me class2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>header<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">data-toggle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>paragraph<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre><pre class=language-markdown><code class=language-markdown>Use the css-module green on this paragraph. {.text-intro}
+</code></pre><p>Output::</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-intro<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Use the css-module green on this paragraph.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre><pre class=language-markdown><code class=language-markdown><span class="token list punctuation">-</span>   list item <span class="token bold"><span class="token punctuation">**</span><span class="token content">bold</span><span class="token punctuation">**</span></span> {.red}
+</code></pre><p>Output::</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>list item <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>bold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+</code></pre><pre class=language-markdown><code class=language-markdown><span class="token list punctuation">-</span>   list item <span class="token bold"><span class="token punctuation">**</span><span class="token content">bold</span><span class="token punctuation">**</span></span>
+    {.red}
+</code></pre><p>Output::</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>list item <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">></span></span>bold<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+</code></pre></div></section><section slide class=slide :class="size-20 content-left"><div class="wrap size-20 content-left" wrap=true><h3>image 增强</h3><p>对于 image ，支持外面包裹一层的写法，具体语法 <code>!![](图片地址 属性)</code>，例如：</p><pre class=language-markdown><code class=language-markdown>!![](https://webslides.tv/static/images/iphone.png .size-50.alignleft)
+</code></pre><p>Output：</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://webslides.tv/static/images/iphone.png<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>size-50 alignleft<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</code></pre><pre class=language-markdown><code class=language-markdown>!![figure](https://webslides.tv/static/images/setup.png .aligncenter)
+</code></pre><p>Output::</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://webslides.tv/static/images/setup.png<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>aligncenter<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span>
+</code></pre></div></section><section slide class=slide :class="size-20 content-left"><div class="wrap size-20 content-left" wrap=true><h3>button</h3><p>nodeppt 的 button 是类似<code>link</code>语法的，支持蓝色、圆角、空心和 icon 版本的 button：</p><pre class=language-markdown><code class=language-markdown>[普通按钮](){.button} [圆角普通按钮](){.button.radius}
+
+[空心](){.button.ghost} [:fa-github: 前面带 icon](){.button}
+</code></pre></div></section><section slide class=slide :class="size-30 content-left"><div class="wrap size-30 content-left" wrap=true><h3>Icon：FontAwesome</h3><p>nodeppt 的 icon 支持 <a href=https://fontawesome.com/ target=_blank>FontAwesome</a></p><p>语法：</p><pre class=language-bash><code class=language-bash>-   <span class="token variable"><span class="token variable">`</span>:fa-xxx:<span class="token variable">`</span></span> → <span class="token variable"><span class="token variable">`</span><span class="token operator">&lt;</span>i <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"fa fa-xxx"</span><span class="token operator">></span><span class="token operator">&lt;</span>/i<span class="token operator">></span><span class="token variable">`</span></span>
+-   <span class="token variable"><span class="token variable">`</span>:~fa-xxx:~<span class="token variable">`</span></span> → <span class="token variable"><span class="token variable">`</span><span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token operator">&lt;</span>i <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"fa fa-xxx"</span><span class="token operator">></span><span class="token operator">&lt;</span>/i<span class="token operator">></span><span class="token operator">&lt;</span>/span<span class="token operator">></span><span class="token variable">`</span></span>
+-   <span class="token variable"><span class="token variable">`</span>::fa-xxx::<span class="token variable">`</span></span> → 块级<span class="token variable"><span class="token variable">`</span><span class="token operator">&lt;</span>i <span class="token assign-left variable">class</span><span class="token operator">=</span><span class="token string">"fa fa-xxx"</span><span class="token operator">></span><span class="token operator">&lt;</span>/i<span class="token operator">></span><span class="token variable">`</span></span>，即不会被<span class="token variable"><span class="token variable">`</span>p<span class="token variable">`</span></span>包裹
+
+</code></pre></div></section><section slide class=slide :class="size-30 alignleft"><div class="wrap size-30 alignleft" wrap=true><h3>span</h3><p>代码修改自<a href=https://github.com/pnewell/markdown-it-span/ target=_blank>markdown-it-span</a>，支持 <code>attr</code>语法，基本用法：</p><pre class=language-md><code class=language-md>:span:
+:span: {.text-span}
+</code></pre></div></section><section slide class=slide :class="size-30 content-left"><div class="wrap size-30 content-left" wrap=true><h3>动效</h3><p>nodeppt 一如既往的支持动效，2.0 版本支持动效主要是页面内的动效。</p><p>支持动效包括：</p><pre class=language-bash><code class=language-bash>-   fadeIn
+-   zoomIn
+-   rollIn
+-   moveIn
+-   fadeInUp
+-   slow
+</code></pre><p>在需要支持的动效父节点添加<code>.build</code>或者在具体的某个元素上添加<code>.tobuild+动效 class</code>即可。</p><p>按照惯例，nodeppt 还支持<code>animate.css</code>的动效哦~</p><p>详细查看文件：<a href=./site/animation.md>site/animation.md</a>和<a href=https://js8.in/nodeppt/animation.html target=_blank>在线演示</a></p></div></section><section slide class=slide :class="size-30 content-left"><div class="wrap size-30 content-left" wrap=true><h3>使用强大的<code>:::</code>完成复杂布局</h3><p><code>:::</code>语法是扩展了 <a href=https://www.npmjs.com/package/markdown-it-container target=_blank>markdown-it-container</a> 语法，默认是任意 tag，例如</p><pre class=language-markdown><code class=language-markdown>:::div {.content-left}
+
+<span class="token title important"><span class="token punctuation">##</span> title</span>
+
+:::
+</code></pre><p>Output：</p><pre class=language-html><code class=language-html><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content-left<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre><p>还支持，<code>tag</code> 嵌套，除此之外，支持的组件包括：</p><pre class=language-html><code class=language-html>-   card：卡片，一边是图片，一边是内容
+-   column：column 多栏布局
+-   shadowbox：带阴影的盒子
+-   steps：步骤组件
+-   cta：
+-   gallery：图片
+-   flexblock：flex block 布局，支持多个子类型
+-   note: 演讲注释
+</code></pre></div></section><section slide class=slide :class="size-30 content-left"><div class="wrap size-30 content-left" wrap=true><h3>使用强大的<code>:::</code>完成复杂布局 2</h3><p>基本语法是：</p><pre class=language-markdown><code class=language-markdown>:::TYPE {.attrs}
+
+<span class="token title important"><span class="token punctuation">##</span> 第一部分</span>
+<span class="token title important">使用 hr 标签隔开
+<span class="token punctuation">---</span></span>
+<span class="token title important"><span class="token punctuation">##</span> 第二部分</span>
+这里的内容也是哦
+:::
+</code></pre><p>详细可以看 <a href=./site/component.md>component</a> 部分的 markdown 文件和<a href=https://js8.in/nodeppt/component.html target=_blank>在线演示</a></p><h2 align=center>打印？导出 pdf？</h2><p>chrome 浏览器，直接在第一页 <code>command+P/ctrl+P</code> 即可</p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3><code>nodeppt.config.js</code></h3><p>在 nodeppt 执行路径下创建<code>nodeppt.config.js</code>文件，可以配置跟<code>webpack</code>相关的选项，另外可以支持自研 nodeppt 插件。</p><p>默认内置的<code>config.js</code>内容如下：</p><pre class=language-js><code class=language-js><span class="token comment">/**
+ * @file 默认配置
+ */</span>
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// project deployment base</span>
+    baseUrl<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// where to output built files</span>
+    outputDir<span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// where to put static assets (js/css/img/font/...)</span>
+    assetsDir<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// filename for index.html (relative to outputDir)</span>
+    indexPath<span class="token operator">:</span> <span class="token string">'index.html'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 插件，包括 markdown 和 posthtml</span>
+    plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// chainWebpack: [],</span>
+
+    <span class="token comment">// whether filename will contain hash part</span>
+    filenameHashing<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// boolean, use full build?</span>
+    runtimeCompiler<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// deps to transpile</span>
+    transpileDependencies<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token comment">/* string or regex */</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// sourceMap for production build?</span>
+    productionSourceMap<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// use thread-loader for babel &amp; TS in production build</span>
+    <span class="token comment">// enabled by default if the machine has more than 1 cores</span>
+    <span class="token function-variable function">parallel</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'os'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">cpus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// multi-page config</span>
+    pages<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// &lt;script type="module" crossorigin="use-credentials"></span>
+    <span class="token comment">// #1656, #1867, #2025</span>
+    crossorigin<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// subresource integrity</span>
+    integrity<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+
+    css<span class="token operator">:</span> <span class="token punctuation">{</span>
+        extract<span class="token operator">:</span> <span class="token boolean">true</span>
+        <span class="token comment">// modules: false,</span>
+        <span class="token comment">// localIdentName: '[name]_[local]_[hash:base64:5]',</span>
+        <span class="token comment">// sourceMap: false,</span>
+        <span class="token comment">// loaderOptions: {}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">/*
+      host: '0.0.0.0',
+      port: 8080,
+      https: false,
+      proxy: null, // string | Object
+      before: app => {}
+    */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3>parser plugin</h3><p>解析插件分两类： <code>markdown-it</code> 和 <code>posthtml</code>，</p><ul><li>markdown-it：是解析 markdown 文件的，如果是增强 markdown 语法，可以用这类插件</li><li>posthtml：是处理 html 标签的，如果是修改输出的 html 内容，可以用这类插件</li></ul><p>定义一个 plugin ：</p><pre class=language-js><code class=language-js>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 这里的 id 必须以 markdown/posthtml开头</span>
+    <span class="token comment">// 分别对应 markdown-it和 posthtml 插件语法</span>
+    id<span class="token operator">:</span> <span class="token string">'markdown-xxx'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 这里的 apply 是插件实际的内容，详细查看 markdown-it和 posthtml 插件开发</span>
+    <span class="token function-variable function">apply</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre><ul><li><a href=https://github.com/markdown-it/markdown-it/tree/master/docs target=_blank>markdown-it docs</a></li><li><a href=https://github.com/posthtml/posthtml/tree/master/docs target=_blank>posthtml docs</a></li></ul></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3>webslides plugin</h3><p>WebSlides 插件需要写到一个 js 文件中，然后作为数组放到<code>window.WSPlugins_</code>中，然后通过在 md 页面的配置（yaml）添加 js 的方法引入。</p><pre class=language-md><code class=language-md>js: - webslide_plugins.js
+</code></pre><pre class=language-js><code class=language-js><span class="token comment">// webslide_plugins.js内容</span>
+window<span class="token punctuation">.</span>WSPlugins_ <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        id<span class="token operator">:</span> <span class="token string">'webslide_plugin_name'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 下面是对应的插件类</span>
+        apply<span class="token operator">:</span> <span class="token keyword">class</span> <span class="token class-name">Plugin</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre><p>参考<a href=https://github.com/webslides/WebSlides/wiki/Plugin-development target=_blank>WebSlides 文档</a></p></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3>Template：自制模板</h3><p>参考<a href=https://github.com/ksky521/nodeppt-template-default target=_blank>nodeppt-template-default</a>。</p><h3>End</h3><p>End</p></div></section></article></div><script src=//cdn.staticfile.org/echarts/4.1.0-release/echarts.min.js></script><script src=//cdn.staticfile.org/mermaid/8.0.0/mermaid.min.js></script><script>mermaid.startOnLoad = false;</script><script>window.pluginsOptions = {"echarts":{"theme":"infographic"},"mermaid":{"theme":"forest"}}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let isPrintMode = false;
+    if(~location.search.indexOf('print-pdf')){
+        isPrintMode = true;
+        WebSlides.registerPlugin('scroll', function(){});
+    }
+    const ws = new WebSlides({
+        loop: false
+    })
+    window.wsInstance = ws;
+    if(isPrintMode){
+        ws.slides.forEach(s=>s.show())
+    }
+}, false)</script><script src=./js/chunk-vendors.js></script><script src=./js/README.js></script></body></html>
