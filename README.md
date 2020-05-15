@@ -1,48 +1,41 @@
 ---
-
-title: Markdown to ppt
+title: Markdown to PPT
 speaker: Edward
 plugins:
-    - echarts
-
+    - echarts: {theme: infographic}
+    - mermaid: {theme: forest}
+    - katex
 <slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
-
 ---
 
-# Start Go {.text-landing.text-shadow}
+# Markdown To PPT {.text-landing .text-shadow}
 
----
-
-By Edward {.text-intro.animated.fadeInUp.delay-500}
+By Edward  {.text-intro.animated.fadeInUp.delay-500}
 
 [:fa-github: Github](https://github.com/crazybber){.button.ghost}
 
-<slide :class="size-30 aligncenter">
+<slide :class="size-50 aligncenter">
+### MARKDOWN 写PPT 神器 `nodeppt`
 
-### 使用MARKDOWN 写PPT
-
----
-
-
-入坑，就三个命令：
+入坑，就四个命令：
 
 ```bash
--   new：使用线上模板创建一个新的 md 文件 {.animated.fadeInUp}
--   serve：启动一个 md 文件的 webpack dev server
--   build：在当前目录的dist目录下，编译产出html/js/css
+-   npm i -g nodeppt
+-   nodeppt new：使用线上模板创建一个新的 md 文件 {.animated.fadeInUp}
+-   nodeppt serve：启动一个 md 文件的 webpack dev server
+-   nodeppt build：在当前目录的dist目录下，编译产出html/js/css
 ```
 
+<slide :class="size-60 aligncenter">
+### 使用模式
 {.animated.fadeInUp}
 
-<slide :class="size-40 aligncenter">
-
-### 使用模式
-
-<h2 align="center">演讲者模式</h2>
+---
+<h4 align="left">演讲者模式</h4>
 
 nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以打开演讲者模式，双屏同步
 
-<h2 align="center">Keyboard Shortcuts</h2>
+<h4 align="left">Keyboard Shortcuts</h4>
 
 -   Page: ↑/↓/←/→ Space Home End
 -   Fullscreen: F
@@ -50,10 +43,9 @@ nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以
 -   Speaker Note: N
 -   Grid Background: Enter
 
-<slide :class="size-30 aligncenter">
-
+<slide :class="size-70 aligncenter">
 ### public resource
-
+---
 <h2 align="center">公共资源：public 文件夹</h2>
 
 如果项目文件夹下，存在`public`文件夹，可以直接通过 url 访问，参考`webpack dev server`的 `contentBase` 选项。
@@ -69,29 +61,25 @@ nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以
 
 整个 markdown 文件分为两部分，第一部分是写在最前面的**配置**，然后是使用`<slide>`隔开的每页幻灯片内容。
 
-<slide :class="size-30 aligncenter">
 
+<slide class="bg-gradient-r" :class=" size-80 aligncenter" image="https://cn.bing.com/az/hprichbg/rb/WinterLynx_ZH-CN7158207296_1920x1080.jpg .dark">
 ### 配置
 
-nodeppt 的配置是直接写在 md 文件顶部的，：
-
--   title: 演讲主题
--   speaker：演讲者
+---
+nodeppt 的配置是直接写在 md 文件顶部
+-   title: 演讲主题 {.animated.fadeInUp}
+-   speaker：演讲者  {.animated.fadeInUp.delay-400}
 -   url：地址
 -   js：js 文件数组，放到 body 之前
 -   css：css 文件数组，放到头部
 -   prismTheme：prism 配色，取值范围 `['dark', 'coy', 'funky', 'okaidia', 'tomorrow', 'solarizedlight', 'twilight']`
 -   plugins：目前支持 [echarts](https://echarts.baidu.com/)，[mermaid](https://mermaidjs.github.io/)和 [katex](https://katex.org) 三个插件
 
-<slide :class="size-30 aligncenter">
-
+<slide :class="size-50 aligncenter">
 #### 插件
 
+---
 目前 nodeppt 支持 [图表 echarts](https://echarts.baidu.com/)，[流程图 mermaid](https://mermaidjs.github.io/)，[数学符号 KaTeX](https://katex.org) 三个插件。
-
-<slide :class="size-30 aligncenter">
-
-#### echarts
 
 echarts 主题配色可以直接在`yaml`配置的 js 中引入。echarts 采用`fence`语法，如下：
 
@@ -110,10 +98,11 @@ echarts 主题配色可以直接在`yaml`配置的 js 中引入。echarts 采用
     }]
 }
 ```
-详见[site/echarts.md](./site/echarts.md)
+
+详见[echarts.md](./echarts.md)
+
 
 <slide :class="size-30 aligncenter">
-
 #### mermaid
 
 mermaid 主题配色可以直接在`yaml`配置的 js 中引入。mermaid 采用`fence`语法，如下：
@@ -130,7 +119,7 @@ sequenceDiagram
     Alice->John: Yes... John, how are you?
 ```
 
-详见[site/mermaid.md](./site/mermaid.md)
+详见[mermaid.md](./mermaid.md)
 
 <slide :class="size-30 aligncenter">
 
