@@ -5,9 +5,9 @@ plugins:
     - echarts: {theme: infographic}
     - mermaid: {theme: forest}
     - katex
-<slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 ---
 
+<slide class="bg-black-blue aligncenter" image="https://source.unsplash.com/C1HhAQrbykQ/ .dark">
 # Markdown To PPT {.text-landing .text-shadow}
 
 By Edward  {.text-intro.animated.fadeInUp.delay-500}
@@ -55,7 +55,6 @@ nodeppt 有演讲者模式，在页面 url 后面增加`?mode=speaker` 既可以
 
 
 <slide :class="size-30 aligncenter">
-
 ### basic Using
 
 
