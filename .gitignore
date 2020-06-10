@@ -31,6 +31,7 @@ _ReSharper*/
 packages/
 # Book build output
 _book
-docs
+docs/
 ## Dependency directory
 node_modules
+docs/
