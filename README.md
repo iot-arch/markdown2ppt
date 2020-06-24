@@ -292,7 +292,7 @@ nodeppt 的 button 是类似`link`语法的，支持蓝色、圆角、空心和 
 
 ### Icon：FontAwesome
 
-nodeppt 的 icon 支持 [FontAwesome](https://fontawesome.com/)
+nodeppt 的 icon 支持 [FontAwesome](https://fontawesome.com/icons?d=gallery)
 
 语法：
 ```bash
